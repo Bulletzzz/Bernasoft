@@ -16,3 +16,4 @@ Route::apiResource('modelos', ModeloController::class);
 Route::apiResource('inventarios', InventarioController::class);
 Route::apiResource('maquinas', MaquinaController::class);
 Route::apiResource('usuarios', UsuarioController::class);
+Route::apiResource('login', UsuarioController::class);

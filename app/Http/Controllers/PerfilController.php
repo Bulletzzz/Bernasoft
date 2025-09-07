@@ -9,7 +9,7 @@ class PerfilController extends Controller
 {
     public function index($id)
     {
-        return Usuario::findOrFail($id); // Retorna os dados do usuário
+        return Usuario::findOrFail($id);
     }
 
     public function update(Request $request, $id)

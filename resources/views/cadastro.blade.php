@@ -32,7 +32,7 @@
                 </div>
             @endif
             
-            <form id="formCadastro" class="formularioAutenticacao" method="POST" action="{{ route('usuarios.store') }}">
+            <form id="formCadastro" class="formularioAutenticacao" method="POST" action="{{ route('index') }}">
                 @csrf
                 <div class="grupoInput">
                     <label for="nome" class="rotuloInput">Nome completo</label>

@@ -2,42 +2,51 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\ModeloController;
-use App\Http\Controllers\MaquinaController;
-use App\Http\Controllers\InventarioController;
-use App\Http\Controllers\ChartController;
 
-// Página inicial (dashboard ou lista de modelos)
-Route::get('/', [ModeloController::class, 'index'])->name('inicio');
+Route::get('/', function () {
+    return view('conv'); 
+})->name('inicio');
 
-// ---------------------- USUÁRIOS ----------------------
-// Formulário de cadastro
-Route::get('/cadastro', [UsuarioController::class, 'create'])->name('usuarios.create');
-// Salvar usuário
+Route::get('/cadastro', function () {
+    return view('cadastro');
+})->name('cadastro');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/charts', function () {
+    return view('charts');
+})->name('charts');
+
+Route::get('/maquinas', function () {
+    return view('maquinas.index');
+})->name('maquinas.index');
+
+Route::get('/maquinas/create', function () {
+    return view('maquinas.create');
+})->name('maquinas.create');
+
+Route::get('/modelos', function () {
+    return view('modelos.index');
+})->name('modelos.index');
+
+Route::get('/modelos/create', function () {
+    return view('modelos.create');
+})->name('modelos.create');
+
+Route::get('/inventarios', function () {
+    return view('inventarios.index');
+})->name('inventarios.index');
+
+Route::get('/inventarios/create', function () {
+    return view('inventarios.create');
+})->name('inventarios.create');
+
+Route::get('/perfil', function () {
+    return view('perfil.index');
+})->name('perfil');
+
 Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
-
-// Formulário de login
-Route::get('/login', [UsuarioController::class, 'login'])->name('login');
-// Autenticação
-Route::post('/login', [UsuarioController::class, 'authenticate'])->name('usuarios.login');
-// Logout
+Route::post('/login', [UsuarioController::class, 'authenticate'])->name('login.submit');
 Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
-
-// ---------------------- PERFIL ----------------------
-Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil');
-// Atualizar perfil
-Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
-
-// ---------------------- MODELOS ----------------------
-Route::resource('modelos', ModeloController::class);
-
-// ---------------------- MÁQUINAS ----------------------
-Route::resource('maquinas', MaquinaController::class);
-
-// ---------------------- INVENTÁRIO ----------------------
-Route::resource('inventario', InventarioController::class);
-
-// ---------------------- GRÁFICOS ----------------------
-Route::get('/charts', [ChartController::class, 'index'])->name('charts');
-
