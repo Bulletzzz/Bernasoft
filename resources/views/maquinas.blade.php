@@ -21,7 +21,7 @@
             <h1>Modelos</h1>
         </section>
         <section class="aq">
-            <button id="perfil" onclick="window.location.href='perfil.html'">
+            <button id="perfil" onclick="window.location.href=''">
                 <h1>Perfil</h1>
                 <i class="fa-solid fa-user"></i>
             </button>
@@ -35,11 +35,11 @@
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a href="/inicio"><button><i class="fas fa-home"></i>Inicio</button></a></li>
-                    <li><a href="/index"><button id="botaosel"><i class="fas fa-gears"></i>Modelos</button></a></li>
-                    <li><a href="/maquinas"><button><i class="fas fa-shop"></i>Maquinas</button></a></li>
-                    <li><a href="/inventario"><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
-                    <li><a href="/charts"><button><i class="fas fa-chart-line"></i>Relatórios</button></a></li>
+                    <li><a href="\inicio"><button><i class="fas fa-home"></i>Inicio</button></a></li>
+                    <li><a href=""><button id="botaosel"><i class="fas fa-gears"></i>Modelos</button></a></li>
+                    <li><a href=""><button><i class="fas fa-shop"></i>Maquinas</button></a></li>
+                    <li><a href=""><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
+                    <li><a href=""><button><i class="fas fa-chart-line"></i>Relatórios</button></a></li>
                 </ul>    
             </nav>
         </aside>
