@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Bernasoft</title>
-    {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/estilo.css') }}">
 </head>
 <body class="paginaAutenticacao">
@@ -15,13 +14,22 @@
                 <h1 class="tituloAutenticacao">Faça login</h1>
             </div>
 
-            {{-- Mensagens de sucesso/erro --}}
             @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
             @endif
 
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            
             @if(session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
@@ -36,20 +44,18 @@
                 </div>
                 
                 <div class="grupoInput">
-                    <label for="senha" class="rotuloInput">Senha</label>
-                    <input type="password" name="senha" id="senha" class="campoInput" placeholder="Digite sua senha" required>
+                    <label for="password" class="rotuloInput">Senha</label>
+                    <input type="password" name="password" id="password" class="campoInput" placeholder="Digite sua senha" required>
                 </div>
                 
                 <button type="submit" class="botaoAutenticacao">Entrar</button>
                 
                 <p class="opcaoAlternativa">
-                    Não tem uma conta? <a href="{{ route('usuarios.create') }}" class="linkAlternativo">Cadastre-se</a>
+                    Não tem uma conta? <a href="/cadastro" class="linkAlternativo">Cadastre-se</a>
                 </p>
             </form>
         </div>
     </div>
-
-    {{-- JS --}}
     <script src="{{ asset('js/login.js') }}"></script>
 </body>
 </html>

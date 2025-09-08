@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Bernasoft</title>
-    {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/estilo.css') }}">
 </head>
 <body class="paginaAutenticacao">
@@ -32,7 +31,7 @@
                 </div>
             @endif
             
-            <form id="formCadastro" class="formularioAutenticacao" method="POST" action="{{ route('index') }}">
+            <form method="POST" action="{{ route('cadastro.store') }}">
                 @csrf
                 <div class="grupoInput">
                     <label for="nome" class="rotuloInput">Nome completo</label>
@@ -62,8 +61,6 @@
             </form>
         </div>
     </div>
-
-    {{-- JS --}}
     <script src="{{ asset('js/login.js') }}"></script>
 </body>
 </html>

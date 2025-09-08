@@ -2,39 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Maquina;
 use Illuminate\Http\Request;
+
+use App\Models\Maquina;
+use App\Models\Categoria;
 
 class MaquinaController extends Controller
 {
-    public function index() {
-        return Maquina::with(['modelo','ponto','premio'])->get();
+    public function index(){
+
+        $maquinas = Maquina::all();
+        $categorias = Categoria::all();
+
+        return view('maquinas',['maquinas' => $maquinas, 'categorias' => $categorias]);
     }
 
     public function store(Request $request) {
-        $request->validate([
-            'nome_esp' => 'required|string|max:50',
-            'data_instalacao' => 'required|date',
-            'status_maquina' => 'required|string|max:30',
-            'id_modelo' => 'required|integer|exists:modelo,id',
-            'id_localizacao' => 'required|integer|exists:ponto,id',
-            'id_premio' => 'required|integer|exists:premio,id',
-        ]);
-        return Maquina::create($request->all());
+
+        $categoria = new Categoria;
+
+        $categoria->title = $request->title;
+
+        $categoria->save();
+
+        return redirect('/maquinas/gerenciar');
+
     }
 
-    public function show($id) {
-        return Maquina::with(['modelo','ponto','premio'])->findOrFail($id);
+    public function destroy($id){
+        Categoria::findOrFail($id)->delete();
+
+        return redirect('/maquinas/gerenciar');
     }
 
-    public function update(Request $request, $id) {
-        $maquina = Maquina::findOrFail($id);
-        $maquina->update($request->all());
-        return $maquina;
+    public function edit($id){
+        $categoria = Categoria::findOrFail($id);
+        return view('edit' , ['categoria' => $categoria]); 
     }
 
-    public function destroy($id) {
-        Maquina::destroy($id);
-        return response()->noContent();
+    public function update(Request $request){
+        Categoria::findOrFail($request->id)->update($request->all());
+        return redirect('/maquinas/gerenciar');
     }
 }
