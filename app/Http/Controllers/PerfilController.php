@@ -2,28 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
-    public function index($id)
+    public function edit()
     {
-        return Usuario::findOrFail($id);
+        $user = Auth::user(); 
+        return view('perfil', compact('user'));
     }
 
-    public function update(Request $request, $id)
+
+    public function update(Request $request)
     {
-        $usuario = Usuario::findOrFail($id);
+        $user = Auth::user();
 
         $request->validate([
-            'nome' => 'sometimes|string|max:255',
-            'email' => 'sometimes|email|unique:usuarios,email,' . $id,
-            'cpf' => 'sometimes|string|max:14|unique:usuarios,cpf,' . $id,
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|max:14', 
+            'email' => 'required|email|max:255|unique:users,email,'.$user->id,
         ]);
 
-        $usuario->update($request->all());
+        $user->nome = $request->nome;
+        $user->cpf = $request->cpf;
+        $user->email = $request->email;
 
-        return $usuario;
+        $user->save();
+
+        return redirect()->route('perfil.edit')->with('success', 'Perfil atualizado com sucesso!');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login.form');
     }
 }

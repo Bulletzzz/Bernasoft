@@ -15,21 +15,18 @@
         <img src="{{ asset('assets/imagens/logo.png') }}" alt="Logo Bernasoft">
         <section class="cabeca"><h1>Modelos</h1></section>
         <section class="aq">
-            <button id="perfil" onclick="window.location.href='{{ route('perfil') }}'">
-                <h1>Perfil</h1>
-                <i class="fa-solid fa-user"></i>
-            </button>
+        <a href="/perfil">
+                <button id="perfil"><h1>Perfil</h1><i class="fa-solid fa-user"></i></button>
+            </a>
         </section>
     </header>
 
     <aside class="sidebar">
         <nav>
             <ul>
-                <li><a href="{{ route('inicio') }}"><button><i class="fas fa-home"></i>Inicio</button></a></li>
-                <li><a href="{{ route('modelos.index') }}"><button id="botaosel"><i class="fas fa-gears"></i>Modelos</button></a></li>
-                <li><a href="{{ route('maquinas.index') }}"><button><i class="fas fa-shop"></i>Máquinas</button></a></li>
-                <li><a href="{{ route('inventario.index') }}"><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
-                <li><a href="{{ route('charts') }}"><button><i class="fas fa-chart-line"></i>Relatórios</button></a></li>
+                <li><a href="/inicio"><button id="botaosel"><i class="fas fa-home"></i>Inicio</button></a></li>
+                <li><a href="/maquinas/gerenciar"><button><i class="fas fa-shop"></i>Maquinas</button></a></li>
+                <li><a href="/inventario"><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
             </ul>
         </nav>
     </aside>

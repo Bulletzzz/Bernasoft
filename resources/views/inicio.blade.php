@@ -13,7 +13,7 @@
         <img src="{{ asset('assets/imagens/logo.png') }}" alt="">
         <section class="cabeca"><h1>Inicio</h1></section>
         <section class="aq">
-            <a href="">
+            <a href="/perfil">
                 <button id="perfil"><h1>Perfil</h1><i class="fa-solid fa-user"></i></button>
             </a>
         </section>
@@ -22,11 +22,9 @@
     <aside class="sidebar">
         <nav>
             <ul>
-                <li><a href=""><button id="botaosel"><i class="fas fa-home"></i>Inicio</button></a></li>
-                <li><a href=""><button><i class="fas fa-gears"></i>Modelos</button></a></li>
+                <li><a href="/inicio"><button id="botaosel"><i class="fas fa-home"></i>Inicio</button></a></li>
                 <li><a href="/maquinas/gerenciar"><button><i class="fas fa-shop"></i>Maquinas</button></a></li>
-                <li><a href=""><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
-                <li><a href=""><button><i class="fas fa-chart-line"></i>Relatórios</button></a></li>
+                <li><a href="/inventario"><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
             </ul>
         </nav>
     </aside>
@@ -39,15 +37,11 @@
                     <i class="fas fa-box"></i>
                     <h3>Gerenciar Maquinas</h3>
                 </a>
-                <a href="" class="botao-acao">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Ver Relatórios</h3>
-                </a>
-                <a href="" class="botao-acao">
+                <a href="/perfil" class="botao-acao">
                     <i class="fas fa-user"></i>
                     <h3>Perfil</h3>
                 </a>
-                <a href="" class="botao-acao">
+                <a href="/inventario" class="botao-acao">
                     <i class="fas fa-boxes-stacked"></i>
                     <h3>Inventário</h3>
                 </a>

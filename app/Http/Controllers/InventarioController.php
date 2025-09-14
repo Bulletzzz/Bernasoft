@@ -2,36 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventario;
 use Illuminate\Http\Request;
+use App\Models\Inventario;
+use App\Models\Maquina;
 
 class InventarioController extends Controller
 {
-    public function index() {
-        return Inventario::with('modelo')->get();
+    public function index()
+    {
+        $itens = Inventario::with('modelo')->get();
+        $maquinas = Maquina::all();
+        return view('inventario', compact('itens', 'maquinas'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
-            'quantidade' => 'required|integer',
+            'quantidade' => 'required|integer|min:1',
             'data_inv' => 'required|date',
-            'id_modelo' => 'required|integer|exists:modelo,id',
+            'id_modelo' => 'required|exists:modelos,id',
         ]);
-        return Inventario::create($request->all());
-    }
 
-    public function show($id) {
-        return Inventario::with('modelo')->findOrFail($id);
-    }
+        Inventario::create([
+            'quantidade' => $request->quantidade,
+            'data_inv' => $request->data_inv,
+            'id_modelo' => $request->id_modelo,
+        ]);
 
-    public function update(Request $request, $id) {
-        $inventario = Inventario::findOrFail($id);
-        $inventario->update($request->all());
-        return $inventario;
-    }
-
-    public function destroy($id) {
-        Inventario::destroy($id);
-        return response()->noContent();
+        return redirect()->route('inventario.index')->with('success', 'Inventário registrado com sucesso!');
     }
 }

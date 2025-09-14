@@ -18,10 +18,10 @@
     <header>
         <img src="assets/imagens/logo.png" alt="">
         <section class="cabeca">
-            <h1>Modelos</h1>
+            <h1>Maquinas</h1>
         </section>
         <section class="aq">
-            <button id="perfil" onclick="window.location.href=''">
+            <button id="perfil" onclick="window.location.href='/perfil'">
                 <h1>Perfil</h1>
                 <i class="fa-solid fa-user"></i>
             </button>
@@ -33,16 +33,14 @@
         </div>
 
         <aside class="sidebar">
-            <nav>
-                <ul>
-                    <li><a href="\inicio"><button><i class="fas fa-home"></i>Inicio</button></a></li>
-                    <li><a href=""><button id="botaosel"><i class="fas fa-gears"></i>Modelos</button></a></li>
-                    <li><a href=""><button><i class="fas fa-shop"></i>Maquinas</button></a></li>
-                    <li><a href=""><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
-                    <li><a href=""><button><i class="fas fa-chart-line"></i>Relatórios</button></a></li>
-                </ul>    
-            </nav>
-        </aside>
+        <nav>
+            <ul>
+                <li><a href="/inicio"><button id="botaosel"><i class="fas fa-home"></i>Inicio</button></a></li>
+                <li><a href="/maquinas/gerenciar"><button><i class="fas fa-shop"></i>Maquinas</button></a></li>
+                <li><a href="/inventario"><button><i class="fas fa-boxes-stacked"></i>Inventário</button></a></li>
+            </ul>
+        </nav>
+    </aside>
 
         <section class="conteudo">
 

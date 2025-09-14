@@ -10,15 +10,21 @@ use App\Models\Modelo;
 class ChartController extends Controller
 {
     public function index() {
-        $inventarios = Inventario::with('modelo')->get();
-        $maquinas = Maquina::with('modelo')->get();
-        $modelos = Modelo::all();
+        $modelos = Modelo::withCount('inventarios')->get();
+        $modelosNomes = $modelos->pluck('nome');
+        $modelosQuantidades = $modelos->pluck('inventarios_count'); 
 
-        return response()->json([
-            'inventarios' => $inventarios,
-            'maquinas' => $maquinas,
-            'modelos' => $modelos,
-        ]);
+        $maquinas = Inventario::with('modelo')->orderBy('data_inv')->get();
+        $maquinasDatas = $maquinas->pluck('data_inv'); 
+        $maquinasQuantidades = $maquinas->pluck('quantidade'); 
+    
+        return view('charts', compact(
+            'modelosNomes', 
+            'modelosQuantidades', 
+            'maquinasDatas', 
+            'maquinasQuantidades'
+        ));
     }
+    
 
 }
