@@ -11,7 +11,6 @@
 <body>
 
 <main class="container">
-    <!--Cabeçalho-->
     <header>
         <img src="{{ asset('assets/imagens/logo.png') }}" alt="">
         <section class="cabeca"><h1>Perfil</h1></section>
