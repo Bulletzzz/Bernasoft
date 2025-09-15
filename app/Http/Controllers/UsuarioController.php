@@ -35,7 +35,7 @@ class UsuarioController extends Controller
         ]);
         $request->merge(['senha' => Hash::make($request->senha)]);
         Usuario::create($request->all());
-        return redirect()->route('inicio');
+        return redirect('/login');
     }
 
     public function authenticate(Request $request)
@@ -47,7 +47,7 @@ class UsuarioController extends Controller
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->intended('/inicio');
+            return redirect()->intended('inicio');
         }
 
         return back()->withErrors([
