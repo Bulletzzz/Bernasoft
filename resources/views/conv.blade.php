@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bernasoft</title>
+    {{-- CSS --}}
+    <link rel="stylesheet" href="{{ asset('assets/estilo.css') }}">
+</head>
+<body>
+    <main>
+        <div id="top1">
+            <div id="header1">
+                <div id="header2">
+                    <img id="imgheader" src="assets/images/logosemfundo.png" alt="">
+                    <a href="{{ url('/login') }}"><button id="flogin">Fazer login</button></a>
+                </div>
+            </div>
+            <div id="cconteudo1">
+                    <div id="cconteudo2">
+                        <div id="ctexto">
+                            <h1>Gerencie com eficiência seu negócio</h1>
+                            <p>Somos a solução de gerenciamento completa para suas máquinas de garra, projetada para maximizar sua lucratividade e transformar seus pontos no destino preferido dos caçadores de prêmios.</p>
+                            <button id="consulta">Faça uma consulta já!</button>
+                        </div>
+                        <div id="cimg">
+                            <img src="assets/images/REc.png" alt="">
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    {{-- JS --}}
+    <script src="{{ asset('js/login.js') }}"></script>
+</body>
+</html>
